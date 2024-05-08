@@ -23,4 +23,9 @@ jobs:
         run: |
           git clone git@github.com:Playrix/homescapes_autotests.git
           cd homescapes_autotests
-          ls
+          pyenv local 3.11.6
+          python -m venv venv
+          source ./venv/bin/activate
+          exec ./install_python_packages.sh
+          ./experimental/runTests.py --only-testing 8075 --platform android --parallel-threads 1
+
