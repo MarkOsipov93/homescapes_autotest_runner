@@ -21,6 +21,7 @@ jobs:
           LC_ALL: "en_US.UTF-8"          
           TEST_ENV: "${{github.event.inputs.TEST_ENV}}"
         run: |
+          rm -rf homescapes_autotests
           git clone git@github.com:Playrix/homescapes_autotests.git
           cd homescapes_autotests
           pyenv local 3.11.6
