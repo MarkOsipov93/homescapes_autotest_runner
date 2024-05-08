@@ -23,7 +23,7 @@ jobs:
         run: |
           export ANDROID_HOME=$HOME/Library/Android/sdk
           export PATH=$ANDROID_HOME/tools:$PATH
-          export PATH=$$ANDROID_HOME/platform-tools:$PATH
+          export PATH=$ANDROID_HOME/platform-tools:$PATH
           rm -rf homescapes_autotests
           git clone git@github.com:Playrix/homescapes_autotests.git
           cd homescapes_autotests
