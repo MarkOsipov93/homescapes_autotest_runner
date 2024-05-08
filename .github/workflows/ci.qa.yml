@@ -52,7 +52,7 @@ jobs:
           rm -rf homescapes_autotests
           git clone -b $AUTOTESTS_BRANCH git@github.com:Playrix/homescapes_autotests.git
           cd homescapes_autotests
-          python -m venv venv
+          python3 -m venv venv
           source ./venv/bin/activate
           pyenv local 3.11.6
           eval "$(pyenv init -)"
