@@ -9,7 +9,7 @@ on:
       
       TEAMCITY_BUILD_ID: 
         description: Teamcity build id
-        default: "18408273"
+        default: ""
     
       PLATFORM:
         description: Platform
@@ -17,7 +17,7 @@ on:
       
       ONLY_TESTING:
         description: Only testing
-        default: "8075"
+        default: ""
       
       RETRIES: 
         description: Retries
