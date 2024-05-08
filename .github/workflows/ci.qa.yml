@@ -18,7 +18,8 @@ jobs:
         env: 
           LANG: "en_US.UTF-8"
           LANGUAG: "en_US.UTF-8"
-          LC_ALL: "en_US.UTF-8"          
+          LC_ALL: "en_US.UTF-8"
+          ANDROID_HOME: "$HOME/Library/Android/sdk"          
           TEST_ENV: "${{github.event.inputs.TEST_ENV}}"
         run: |
           rm -rf homescapes_autotests
