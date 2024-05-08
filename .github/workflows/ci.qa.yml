@@ -4,27 +4,27 @@ on:
   workflow_dispatch:
     inputs:     
       AUTOTESTS_BRANCH: 
-        description: Branch in homescapes_autotests project
+        description: homescapes_autotests branch
         default: "master"
       
       TEAMCITY_BUILD_ID: 
-        description: Build id in teamcity for artifact downloading
+        description: Teamcity build id
         default: "18408273"
     
       PLATFORM:
-        description: Platform ios or android
+        description: Platform
         default: "android"
       
       ONLY_TESTING:
-        description: List of tests to run
+        description: Only testing
         default: "8075"
       
       RETRIES: 
-        description: Retries count
+        description: Retries
         default: "3"
       
       PARALLEL_THREADS: 
-        description: Parallel devices amount
+        description: Parallel threads
         default: "1"
 jobs:
   PLR-HS-QA-AUTOTESTS:
