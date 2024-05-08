@@ -3,11 +3,31 @@ run-name: 🤖 Running Homescapes UI Autotests
 on: 
   workflow_dispatch:
     inputs:     
-      TEST_ENV: 
-        description: Just for test
-        default: "123456"
+      AUTOTESTS_BRANCH: 
+        description: Branch in homescapes_autotests project
+        default: "master"
+      
+      TEAMCITY_BUILD_ID: 
+        description: Build id in teamcity for artifact downloading
+        default: "18408273"
+    
+      PLATFORM:
+        description: Platform ios or android
+        default: "android"
+      
+      ONLY_TESTING:
+        description: List of tests to run
+        default: "8075"
+      
+      RETRIES: 
+        description: Retries count
+        default: "3"
+      
+      PARALLEL_THREADS: 
+        description: Parallel devices amount
+        default: "1"
 jobs:
-  iOS-QA-CI-TF:
+  PLR-HS-QA-AUTOTESTS:
     strategy:
       matrix:
         runner: [aqa_hs_0]
@@ -19,13 +39,18 @@ jobs:
           LANG: "en_US.UTF-8"
           LANGUAG: "en_US.UTF-8"
           LC_ALL: "en_US.UTF-8"
-          TEST_ENV: "${{github.event.inputs.TEST_ENV}}"
+          AUTOTESTS_BRANCH: "${{github.event.inputs.AUTOTESTS_BRANCH}}"
+          TEAMCITY_BUILD_ID: "${{github.event.inputs.TEAMCITY_BUILD_ID}}"
+          PLATFORM: "${{github.event.inputs.PLATFORM}}"
+          ONLY_TESTING: "${{github.event.inputs.ONLY_TESTING}}"
+          RETRIES: "${{github.event.inputs.RETRIES}}"
+          PARALLEL_THREADS: "${{github.event.inputs.PARALLEL_THREADS}}"
         run: |
           export ANDROID_HOME=$HOME/Library/Android/sdk
           export PATH=$ANDROID_HOME/tools:$PATH
           export PATH=$ANDROID_HOME/platform-tools:$PATH
           rm -rf homescapes_autotests
-          git clone -b mosipov/teamcity_debug git@github.com:Playrix/homescapes_autotests.git
+          git clone -b $AUTOTESTS_BRANCH git@github.com:Playrix/homescapes_autotests.git
           cd homescapes_autotests
           python -m venv venv
           source ./venv/bin/activate
@@ -35,5 +60,5 @@ jobs:
           pip3 install -r ./requirements.txt
           pip3 install --extra-index-url https://nexus.local.playrix.com/repository/playrix-pypi/simple autotest_client==0.1.10 --no-deps
           mkdir app
-          ./experimental/runTests.py --only-testing 8075 --platform android --parallel-threads 1 --teamcity-build-id 18408273 --teamcity-user mark-o --teamcity-pass FZBHvt38u10726\$4
+          ./experimental/runTests.py --only-testing $ONLY_TESTING --platform $PLATFORM --retries $RETRIES --parallel-threads $PARALLEL_THREADS --teamcity-build-id 18408273 --teamcity-user mark-o --teamcity-pass FZBHvt38u10726\$4
 
