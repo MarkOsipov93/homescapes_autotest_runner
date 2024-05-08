@@ -5,7 +5,7 @@ on:
     inputs:     
       AUTOTESTS_BRANCH: 
         description: homescapes_autotests branch
-        default: "master"
+        default: "main"
       
       TEAMCITY_BUILD_ID: 
         description: Teamcity build id
