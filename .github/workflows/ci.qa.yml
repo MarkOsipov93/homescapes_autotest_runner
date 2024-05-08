@@ -26,6 +26,9 @@ on:
       PARALLEL_THREADS: 
         description: Parallel threads
         default: "1"
+      TEST_RUN_ID:
+        description: Test run id
+        default: ""
 jobs:
   PLR-HS-QA-AUTOTESTS:
     strategy:
@@ -45,6 +48,7 @@ jobs:
           ONLY_TESTING: "${{github.event.inputs.ONLY_TESTING}}"
           RETRIES: "${{github.event.inputs.RETRIES}}"
           PARALLEL_THREADS: "${{github.event.inputs.PARALLEL_THREADS}}"
+          TEST_RUN_ID:"${{github.event.inputs.TEST_RUN_ID}}"
         run: |
           export ANDROID_HOME=$HOME/Library/Android/sdk
           export PATH=$ANDROID_HOME/tools:$PATH
@@ -61,5 +65,5 @@ jobs:
           pip3 install -r ./requirements.txt
           pip3 install --extra-index-url https://nexus.local.playrix.com/repository/playrix-pypi/simple autotest_client==0.1.10 --no-deps
           mkdir app
-          ./experimental/runTests.py --only-testing $ONLY_TESTING --platform $PLATFORM --retries $RETRIES --parallel-threads $PARALLEL_THREADS --teamcity-build-id 18408273 --teamcity-user mark-o --teamcity-pass FZBHvt38u10726\$4
+          ./experimental/runTests.py --test-run-id $TEST_RUN_ID --only-testing $ONLY_TESTING --platform $PLATFORM --retries $RETRIES --parallel-threads $PARALLEL_THREADS --teamcity-build-id 18408273 --teamcity-user mark-o --teamcity-pass FZBHvt38u10726\$4
 
