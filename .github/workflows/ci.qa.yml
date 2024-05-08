@@ -22,7 +22,7 @@ jobs:
           ANDROID_HOME: "~/Library/Android/sdk"          
           TEST_ENV: "${{github.event.inputs.TEST_ENV}}"
         run: |
-          ~/Library/Android/sdk/cmdline-tools/latest/bin/sdkmanager/cmdline-tools/latest/bin/sdkmanager --list_installed
+          ~/Library/Android/sdk/cmdline-tools/latest/bin/sdkmanager --list_installed
           rm -rf homescapes_autotests
           git clone git@github.com:Playrix/homescapes_autotests.git
           cd homescapes_autotests
