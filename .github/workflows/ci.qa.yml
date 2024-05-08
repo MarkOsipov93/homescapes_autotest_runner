@@ -33,5 +33,5 @@ jobs:
           pip3 install --upgrade pip
           pip3 install -r ./requirements.txt
           pip3 install --extra-index-url https://nexus.local.playrix.com/repository/playrix-pypi/simple autotest_client==0.1.10 --no-deps
-          ./experimental/runTests.py --only-testing 8075 --platform android --parallel-threads 1
+          ./experimental/runTests.py --only-testing 8075 --platform android --parallel-threads 1 --teamcity-build-id 18408273 --teamcity-user mark-o --teamcity-pass FZBHvt38u10726$4
 
