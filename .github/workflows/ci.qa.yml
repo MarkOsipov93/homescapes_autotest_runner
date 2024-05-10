@@ -67,5 +67,5 @@ jobs:
           pip3 install --extra-index-url https://nexus.local.playrix.com/repository/playrix-pypi/simple autotest_client==0.1.10 --no-deps
           mkdir app
           rm -rf ~/.android/avd && mkdir ~/.android/avd
-          ./experimental/runTests.py --test-run-id "$TEST_RUN_ID" --only-testing "$ONLY_TESTING" --platform $PLATFORM --retries $RETRIES --parallel-threads $PARALLEL_THREADS --teamcity-build-id 18408273 --teamcity-user mark-o --teamcity-pass FZBHvt38u10726\$4
+          ./experimental/runTests.py --test-run-id "$TEST_RUN_ID" --only-testing "$ONLY_TESTING" --platform $PLATFORM --retries $RETRIES --parallel-threads $PARALLEL_THREADS --teamcity-build-id $TEAMCITY_BUILD_ID --teamcity-user mark-o --teamcity-pass FZBHvt38u10726\$4
 
