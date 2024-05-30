@@ -51,6 +51,7 @@ jobs:
           PARALLEL_THREADS: "${{github.event.inputs.PARALLEL_THREADS}}"
           TEST_RUN_ID: "${{github.event.inputs.TEST_RUN_ID}}"
           CALENDAR_API_TOKEN: "${{secrets.CALENDAR_API_TOKEN_SECRET}}"
+          QASE_TESTOPS_API_TOKEN: "${{secrets.QASE_TESTOPS_API_TOKEN}}"
         run: |
           export ANDROID_HOME=$HOME/Library/Android/sdk
           export PATH=$ANDROID_HOME/tools:$PATH
