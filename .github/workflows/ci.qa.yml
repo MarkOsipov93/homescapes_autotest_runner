@@ -72,7 +72,7 @@ jobs:
           eval "$(pyenv init -)"
           pip3 install --upgrade pip
           pip3 install -r ./requirements.txt
-          pip3 install -r .homescapes_tools/requirements.txt
+          pip3 install -r ./homescapes_tools/requirements.txt
           pip3 install --extra-index-url https://nexus.local.playrix.com/repository/playrix-pypi/simple autotest_client==0.1.10 --no-deps
           mkdir app
           rm -rf ~/.android/avd && mkdir ~/.android/avd
