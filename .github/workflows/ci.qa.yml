@@ -63,7 +63,7 @@ jobs:
           export PATH=$ANDROID_HOME/tools:$PATH
           export PATH=$ANDROID_HOME/platform-tools:$PATH
           rm -rf homescapes_autotests
-          git clone -b $AUTOTESTS_BRANCH git@github.com:Playrix/homescapes_autotests.git
+          git clone --recursive -b $AUTOTESTS_BRANCH git@github.com:Playrix/homescapes_autotests.git
           cd homescapes_autotests
           git show
           python3 -m venv venv
@@ -72,6 +72,7 @@ jobs:
           eval "$(pyenv init -)"
           pip3 install --upgrade pip
           pip3 install -r ./requirements.txt
+          pip3 install -r .homescapes_tools/requirements.txt
           pip3 install --extra-index-url https://nexus.local.playrix.com/repository/playrix-pypi/simple autotest_client==0.1.10 --no-deps
           mkdir app
           rm -rf ~/.android/avd && mkdir ~/.android/avd
