@@ -65,6 +65,7 @@ jobs:
           rm -rf homescapes_autotests
           git clone --recursive -b $AUTOTESTS_BRANCH git@github.com:Playrix/homescapes_autotests.git
           cd homescapes_autotests
+          git submodule update --init --recursive --remote
           git show
           python3 -m venv venv
           source ./venv/bin/activate
@@ -73,7 +74,7 @@ jobs:
           pip3 install --upgrade pip
           pip3 install -r ./requirements.txt
           pip3 install -r ./homescapes_tools/requirements.txt
-          pip3 install --extra-index-url https://nexus.local.playrix.com/repository/playrix-pypi/simple autotest_client==0.1.10 --no-deps
+          pip3 install --extra-index-url https://nexus.local.playrix.com/repository/playrix-pypi/simple autotest_client==1.16.4 --no-deps
           mkdir app
           rm -rf ~/.android/avd && mkdir ~/.android/avd
           ./experimental/runTests.py --test-run-id "$TEST_RUN_ID" --only-testing "$ONLY_TESTING" --platform $PLATFORM --retries $RETRIES --parallel-threads $PARALLEL_THREADS --tms-auto-export $TMS_AUTO_EXPORT --teamcity-build-id $TEAMCITY_BUILD_ID --teamcity-user mark-o --teamcity-pass FZBHvt38u10726\$4
