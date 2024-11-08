@@ -34,6 +34,11 @@ on:
       TMS_AUTO_EXPORT:
         description: Enable auto export in tms (QASE)
         default: "false"
+
+      SEASON_TYPE: 
+        description: Season type for season tests
+        default: "pet"
+        
 jobs:
   PLR-HS-QA-AUTOTESTS:
     strategy:
@@ -56,7 +61,8 @@ jobs:
           TEST_RUN_ID: "${{github.event.inputs.TEST_RUN_ID}}"
           TMS_AUTO_EXPORT: "${{github.event.inputs.TMS_AUTO_EXPORT}}"
           CALENDAR_API_TOKEN: "${{secrets.CALENDAR_API_TOKEN_SECRET}}"
-          QASE_TESTOPS_API_TOKEN: "${{secrets.QASE_TESTOPS_API_TOKEN_SECRET}}"         
+          QASE_TESTOPS_API_TOKEN: "${{secrets.QASE_TESTOPS_API_TOKEN_SECRET}}"
+          SEASON_TYPE: "${{github.event.inputs.SEASON_TYPE}}"
         run: |
           export ANDROID_HOME_OLD=$HOME/Library/Android/sdk
           export ANDROID_HOME=/opt/android-sdk
@@ -77,4 +83,4 @@ jobs:
           pip3 install --extra-index-url https://nexus.local.playrix.com/repository/playrix-pypi/simple autotest_client==1.16.4 --no-deps
           mkdir app
           rm -rf ~/.android/avd && mkdir ~/.android/avd
-          ./experimental/runTests.py --test-run-id "$TEST_RUN_ID" --only-testing "$ONLY_TESTING" --platform $PLATFORM --retries $RETRIES --parallel-threads $PARALLEL_THREADS --tms-auto-export $TMS_AUTO_EXPORT --teamcity-build-id $TEAMCITY_BUILD_ID --teamcity-user mark-o --teamcity-pass FZBHvt38u10726\$4
+          ./experimental/runTests.py --test-run-id "$TEST_RUN_ID" --only-testing "$ONLY_TESTING" --platform $PLATFORM --retries $RETRIES --parallel-threads $PARALLEL_THREADS --tms-auto-export $TMS_AUTO_EXPORT --teamcity-build-id $TEAMCITY_BUILD_ID --teamcity-user mark-o --teamcity-pass FZBHvt38u10726\$4 --season-type $SEASON_TYPE
