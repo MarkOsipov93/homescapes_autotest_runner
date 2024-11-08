@@ -37,7 +37,7 @@ on:
 
       SEASON_TYPE: 
         description: Season type for season tests
-        default: "pet"
+        default: "last_season"
         
 jobs:
   PLR-HS-QA-AUTOTESTS:
