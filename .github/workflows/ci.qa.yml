@@ -9,11 +9,7 @@ on:
       
       TEAMCITY_BUILD_ID: 
         description: Teamcity build id
-        default: ""
-    
-      PLATFORM:
-        description: Platform
-        default: "android"
+        default: ""    
       
       ONLY_TESTING:
         description: Only testing
@@ -62,7 +58,7 @@ jobs:
           LC_ALL: "en_US.UTF-8"
           AUTOTESTS_BRANCH: "${{github.event.inputs.AUTOTESTS_BRANCH}}"
           TEAMCITY_BUILD_ID: "${{github.event.inputs.TEAMCITY_BUILD_ID}}"
-          PLATFORM: "${{github.event.inputs.PLATFORM}}"
+          PLATFORM: "android"
           ONLY_TESTING: "${{github.event.inputs.ONLY_TESTING}}"
           RETRIES: "${{github.event.inputs.RETRIES}}"
           PARALLEL_THREADS: "${{github.event.inputs.PARALLEL_THREADS}}"
